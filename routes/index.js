@@ -5,6 +5,6 @@ const userRoutes = require('./userRoutes');
 
 router.get('/', (req,res) => res.status(200).send({message: 'Server on'}));
 router.use(userRoutes);
-router.use('/users',bodyRoutes);
+router.use(bodyRoutes);
 
 module.exports = router;
