@@ -7,4 +7,4 @@ router.get('/', (req,res) => res.status(200).send({message: 'Server on'}));
 router.use(userRoutes);
 router.use('/users',bodyRoutes);
 
-module.exports = router
+module.exports = router;
