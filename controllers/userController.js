@@ -72,7 +72,7 @@ module.exports = {
       // Respondo con el usuario y el token
       res.status(200).send({user, token});
     } catch (error) {
-       res.status(404).send({error});
+      res.status(404).send({error});
     }
   }
 }

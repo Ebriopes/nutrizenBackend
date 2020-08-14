@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt');
-const SALT_FACTOR = 10
+const SALT_FACTOR = +process.env.SALT
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -20,10 +20,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  dob: {
-    type: String,
-    required: true
-  },
+  dob: String,
   height: {
     type: Number,
     required: true
@@ -50,6 +47,7 @@ userSchema.pre('save',  function(next){
   if(!user.isModified('password')) return next();
 
   bcrypt.genSalt(SALT_FACTOR, (err, salt)=>{
+    console.info(err)
     if(err) return next(err);
 
     bcrypt.hash(user.password, salt, (err, hash) => {

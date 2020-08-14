@@ -2,10 +2,10 @@ const bodyDataController = require('../controllers/bodyDataController');
 const express = require('express');
 const route = express.Router();
 
-route.get('/bodyId', bodyDataController.getAllBodyData);
-route.get('/bodyId/:dataId', bodyDataController.getBodyData);
-route.post('/bodyId', bodyDataController.create);
-route.put('/bodyId/:dataId', bodyDataController.updateBodyData);
-route.delete('/bodyId/dataId', bodyDataController.deleteBodyData);
+route.get('/:id/bodies', bodyDataController.getAllBodyData);
+route.get('/:id/bodies/:bodyId', bodyDataController.getBodyData);
+route.post('/:id/bodies', bodyDataController.create);
+route.put('/:id/bodies/:bodyId', bodyDataController.updateBodyData);
+route.delete('/:id/bodies/:bodyId', bodyDataController.deleteBodyData);
 
 module.exports = route;

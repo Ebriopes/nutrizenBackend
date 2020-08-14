@@ -10,7 +10,7 @@ module.exports = {
       const { authorization } = req.headers;
       const splitted = authorization.split(' ');
 
-      if(splitted[0] !== 'myapp') res.status(403).send({error: 'Tu bearer es incorrecto'});
+      if(splitted[0] !== 'Bearer') res.status(403).send({error: 'Tu bearer es incorrecto'});
 
       const decoded = jwt.verify(splitted[1], process.env.JWT_SECRET);
       req.decoded = decoded;

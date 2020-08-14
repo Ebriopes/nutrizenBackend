@@ -3,10 +3,18 @@ const bodyDataServices = require('../services/bodyDataServices');
 module.exports = {
   create: async(req, res) => {
     try {
-      const body = await bodyDataServices.create(req.body);
+      const body = await bodyDataServices.create(req.body,req.params.id);
       res.status(201).send({body});
     } catch (error) {
       res.status(409).send({error});
+    }
+  },
+  getBodyData: async(req, res)=>{
+    try {
+      const body = await bodyDataServices.getBodyData(req.params.bodyId);
+      res.status(200).send({body});
+    } catch (error) {
+      res.status(404).send({error});
     }
   },
   getAllBodyData: async(req, res)=>{
